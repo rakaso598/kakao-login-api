@@ -1,8 +1,10 @@
 require('dotenv').config();
 const express = require('express');
+const mongoose = require('mongoose');
 const axios = require('axios');
 const cookieParser = require('cookie-parser');
 const app = express();
+const { saveUser, generateToken } = require('./services/authService'); // authService 임포트
 const PORT = process.env.PORT || 3000;
 
 app.use(cookieParser());
@@ -12,6 +14,12 @@ app.get('/auth/kakao', (req, res) => {
     const kakaoAuthUrl = `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.KAKAO_CLIENT_ID}&redirect_uri=${process.env.REDIRECT_URI}&response_type=code&scope=account_email`;
     res.redirect(kakaoAuthUrl);
 });
+
+// MongoDB 연결
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => console.log('MongoDB connected'))
+    .catch(err => console.error('MongoDB connection error:', err));
+
 
 // 카카오 콜백 라우트
 app.get('/auth/kakao/callback', async (req, res) => {
@@ -37,8 +45,11 @@ app.get('/auth/kakao/callback', async (req, res) => {
         });
 
         const userInfo = userResponse.data;
-        res.cookie('kakao_token', access_token); // 토큰을 쿠키에 저장
-        res.json(userInfo); // 사용자 정보 응답
+        const kakaoId = userInfo.id; // 사용자의 고유 ID
+        const token = generateToken(kakaoId); // JWT 토큰 발급
+
+        res.cookie('token', token); // 쿠키에 저장
+        res.json({ token, userInfo }); // 사용자 정보 응답
     } catch (error) {
         console.error('카카오 로그인 실패:', error);
         res.status(500).json({ message: '카카오 로그인 중 오류가 발생했습니다.' });
