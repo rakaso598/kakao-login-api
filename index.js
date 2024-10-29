@@ -9,7 +9,7 @@ app.use(cookieParser());
 
 // 카카오 로그인 URL 생성 및 리다이렉션
 app.get('/auth/kakao', (req, res) => {
-    const kakaoAuthUrl = `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.KAKAO_CLIENT_ID}&redirect_uri=${process.env.REDIRECT_URI}&response_type=code`;
+    const kakaoAuthUrl = `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.KAKAO_CLIENT_ID}&redirect_uri=${process.env.REDIRECT_URI}&response_type=code&scope=account_email`;
     res.redirect(kakaoAuthUrl);
 });
 
