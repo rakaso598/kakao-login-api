@@ -16,7 +16,7 @@ app.get('/auth/kakao', (req, res) => {
 });
 
 // MongoDB 연결
-mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.MONGODB_URI)
     .then(() => console.log('MongoDB connected'))
     .catch(err => console.error('MongoDB connection error:', err));
 
@@ -45,7 +45,7 @@ app.get('/auth/kakao/callback', async (req, res) => {
         });
 
         const userInfo = userResponse.data;
-        const kakaoId = userInfo.id; // 사용자의 고유 ID
+        const kakaoId = await saveUser(userInfo); // 사용자 정보 DB에 저장
         const token = generateToken(kakaoId); // JWT 토큰 발급
 
         res.cookie('token', token); // 쿠키에 저장
