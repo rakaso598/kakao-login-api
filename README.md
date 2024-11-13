@@ -1,5 +1,5 @@
 # List of implemented functions:  
----  
+---
 (2024-10-30) Items successfully implemented.
 Item 1. Kakao login success  
 Item 2. JWT issuance and cookie storage complete  
