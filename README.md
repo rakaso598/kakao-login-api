@@ -1,5 +1,5 @@
-#### ⚠️ 주의: 이 프로젝트는 실제 로그인 서비스로 구현되지 않았으므로 신뢰성과 보안을 보장할 수 없습니다.    
-#### 🔧 We are not responsible for any problems caused by application to real projects.  
+### ⚠️주의: 이 프로젝트는 실제 로그인 서비스로 구현되지 않았으므로 신뢰성과 보안을 보장할 수 없습니다.
+### 🔧We are not responsible for any problems caused by application to real projects.
 
 ---  
 
