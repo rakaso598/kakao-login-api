@@ -19,18 +19,18 @@
 
 ## 프로젝트 구조
 
-├── models/
-│   └── UserDB_and_JWT.js (MongoDB 모델 및 JWT 관련 로직)
-├── node_modules/
-├── services/
-│   └── jwt_mongo_login--OK/ (서비스 관련 로직)
-├── .gitignore
-├── README.md
-├── index.js (메인 애플리케이션 파일)
-├── package-lock.json
-└── package.json
+├── models/        
+│   └── UserDB_and_JWT.js (MongoDB 모델 및 JWT 관련 로직)        
+├── node_modules/        
+├── services/         
+│   └── jwt_mongo_login--OK/ (서비스 관련 로직)         
+├── .gitignore         
+├── README.md        
+├── index.js (메인 애플리케이션 파일)         
+├── package-lock.json       
+└── package.json         
 
-
+         
 ## 기술 스택
 
 * Node.js
