@@ -29,12 +29,14 @@
 * **클라이언트에 사용자 정보 및 토큰 전달 (데모)**: 클라이언트에게 사용자 정보와 JWT를 JSON 형태로 응답
 
 ## 프로젝트 구조
+```markdown
 ├── models/         # MongoDB 모델 정의 (예: User 모델) 및 JWT 관련 로직
 ├── node_modules/   # 프로젝트 의존성 모듈
 ├── services/       # 서비스 관련 로직 (예: 사용자 저장, 토큰 생성)
 ├── index.js        # 메인 애플리케이션 파일
 ├── package-lock.json
 └── package.json
+```
 
 ## 기술 스택
 
